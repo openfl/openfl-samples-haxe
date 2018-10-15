@@ -5,10 +5,11 @@
   "devDependencies": {
     "haxe": "^5.0.0",
     "haxe-loader": "^0.5.0",
-    "openfl": "*",
+    "openfl": "^8.6.1",
     "uglifyjs-webpack-plugin": "^1.1.4",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.1"
   },
   "haxeDependencies": {
