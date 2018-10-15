@@ -1,70 +1,27 @@
 version: 2
 jobs:
   
-  Haxelib:
-    docker:
-     - image: openfl/openfl-tests-unit-3.4:0.0.3
-    steps:
-     - checkout
-     - run: git clone --recursive https://github.com/openfl/openfl ~/openfl --depth 1
-     - run: haxelib dev openfl ~/openfl
-     - run: git clone --recursive https://github.com/openfl/lime ~/lime --depth 1
-     - run: haxelib dev lime ~/lime
-     - run: haxelib install actuate
-     - run: haxelib install box2d
-     - run: haxelib install layout
-     - run: haxelib dev openfl-samples ~/project
-     - run: haxelib run lime rebuild linux -release -64 -nocffi > log.txt || cat log.txt
-     - run: haxelib run lime rebuild tools -nocffi
-     - run: haxelib run openfl create ActuateExample
-     - run: haxelib run openfl create AddingAnimation
-     - run: haxelib run openfl create AddingText
-     - run: haxelib run openfl create BunnyMark
-     - run: haxelib run openfl create DisplayingABitmap
-     - run: haxelib run openfl create HandlingKeyboardEvents
-     - run: haxelib run openfl create HandlingMouseEvents
-     - run: haxelib run openfl create HerokuShaders
-     - run: haxelib run openfl create PiratePig
-     - run: haxelib run openfl create PlayingSound
-     - run: haxelib run openfl create SimpleBox2D
-     - run: haxelib run openfl create SimpleAbstractView
-     - run: haxelib run openfl create SimpleSWFLayout
-     - run: haxelib run openfl build ~/project/ActuateExample flash
-     - run: haxelib run openfl build ~/project/AddingAnimation flash
-     - run: haxelib run openfl build ~/project/AddingText flash
-     - run: haxelib run openfl build ~/project/BunnyMark neko
-     - run: haxelib run openfl build ~/project/DisplayingABitmap flash
-     - run: haxelib run openfl build ~/project/HandlingKeyboardEvents flash
-     - run: haxelib run openfl build ~/project/HandlingMouseEvents flash
-     - run: haxelib run openfl build ~/project/HerokuShaders neko
-     - run: haxelib run openfl build ~/project/PiratePig flash
-     - run: haxelib run openfl build ~/project/PlayingSound flash
-     - run: haxelib run openfl build ~/project/SimpleBox2D flash
-     - run: haxelib run openfl build ~/project/SimpleAbstractView neko
-     - run: haxelib run openfl build ~/project/SimpleSWFLayout flash
-  
-  NPM:
+  build:
     docker:
      - image: openfl/ci-openfl-js:0.0.2
     steps:
      - checkout
      - run:
          name: Install Dependencies (Demos)
-         command: find npm/demos -maxdepth 1 -mindepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm install" \;
+         command: find demos -maxdepth 1 -mindepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm install" \;
      - run:
          name: Install Dependencies (Features)
-         command: find npm/features -maxdepth 2 -mindepth 2 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm install" \;
+         command: find features -maxdepth 2 -mindepth 2 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm install" \;
      - run:
          name: Build Demos
-         command: find npm/demos -maxdepth 1 -mindepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm run build" \;
+         command: find demos -maxdepth 1 -mindepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm run build" \;
      - run:
          name: Build Features
-         command: find npm/features -maxdepth 2 -mindepth 2 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm run build" \;
+         command: find features -maxdepth 2 -mindepth 2 -type d \( ! -name . \) -exec bash -c "cd '{}' && npm run build" \;
   
 workflows:
   version: 2
   
   build:
     jobs:
-     - NPM
-     - Haxelib
+     - build

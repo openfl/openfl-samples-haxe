@@ -34,13 +34,13 @@ class Script extends hxp.Script {
 				
 				listSamples ();
 			
-			case "build", "run", "test", "update", "clean", "display":
+			case "install", "build", "run", "test", "update", "clean", "display":
 				
 				execSamples ();
 			
 			default:
 				
-				Log.error ("Unkown command \"" + command + "\"");
+				Log.error ("Unknown command \"" + command + "\"");
 			
 		}
 		
@@ -85,14 +85,6 @@ class Script extends hxp.Script {
 			if (paths.length == 0) {
 				for (sample in samples) {
 					if (StringTools.startsWith (sample, sampleName)) {
-						paths.push (sample);
-					}
-				}
-			}
-			
-			if (paths.length == 0) {
-				for (sample in samples) {
-					if (StringTools.startsWith (sample, Path.combine ("haxelib", sampleName))) {
 						paths.push (sample);
 					}
 				}
@@ -156,7 +148,7 @@ class Script extends hxp.Script {
 					
 					if (target != targets[0]) continue;
 					script = "npm";
-					if (target == "install") {
+					if (command == "install") {
 						args = [ "install", "-s" ];
 					} else {
 						args = [ "start", "-s" ];
