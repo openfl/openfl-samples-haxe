@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
+    "actuate": "^1.8.8",
     "haxe": "^5.0.10",
     "haxe-loader": "^0.5.0",
     "openfl": "^8.6.1",
