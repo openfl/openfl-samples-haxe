@@ -14,7 +14,7 @@ git clone https://github.com/openfl/openfl-samples-haxe
 ### Choose a sample
 
 ```bash
-cd openfl-samples-haxe/npm/features/display/DisplayingABitmap
+cd openfl-samples-haxe/features/display/DisplayingABitmap
 ```
 
 ### Install and start
