@@ -3,7 +3,7 @@ import js.html.webgl.Program;
 import js.html.webgl.RenderingContext;
 import js.html.webgl.Texture;
 import js.html.webgl.UniformLocation;
-import js.html.Float32Array;
+import js.lib.Float32Array;
 import js.html.ImageElement;
 import js.Browser;
 import openfl.display.BitmapData;
@@ -46,7 +46,7 @@ class App extends Sprite
 			invalidate();
 		}).onError(function(e)
 		{
-			trace(e);
+				trace(e);
 		});
 
 		x = 100;

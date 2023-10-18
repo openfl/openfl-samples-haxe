@@ -3,7 +3,7 @@ import js.html.webgl.Program in GLProgram;
 import js.html.webgl.RenderingContext in GLRenderContext;
 import js.html.webgl.Shader in GLShader;
 import js.html.webgl.UniformLocation in GLUniformLocation;
-import js.html.Float32Array;
+import js.lib.Float32Array;
 import openfl.display.OpenGLRenderer;
 import openfl.display.Sprite;
 import openfl.display.Stage;
@@ -164,8 +164,8 @@ class App extends Sprite
 		gl.useProgram(glCurrentProgram);
 
 		gl.uniform1f(glTimeUniform, time / 1000);
-		gl
-			.uniform2f(glMouseUniform, 0.1, 0.1); // gl.uniform2f (glMouseUniform, (stage.mouseX / stage.stageWidth) * 2 - 1, (stage.mouseY / stage.stageHeight) * 2 - 1);
+		gl.uniform2f(glMouseUniform, 0.1,
+			0.1); // gl.uniform2f (glMouseUniform, (stage.mouseX / stage.stageWidth) * 2 - 1, (stage.mouseY / stage.stageHeight) * 2 - 1);
 		gl.uniform2f(glResolutionUniform, stage.stageWidth, stage.stageHeight);
 		gl.uniform1i(glBackbufferUniform, 0);
 		gl.uniform2f(glSurfaceSizeUniform, stage.stageWidth, stage.stageHeight);
@@ -210,7 +210,7 @@ class App extends Sprite
 			js.Browser.document.body.appendChild(stage.element);
 		}).onError(function(e)
 		{
-			trace(e);
+				trace(e);
 		});
 	}
 }
