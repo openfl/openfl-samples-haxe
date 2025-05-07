@@ -1,4 +1,4 @@
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md) [![Build Status](https://img.shields.io/circleci/project/github/openfl/openfl-samples-haxe/master.svg)](https://circleci.com/gh/openfl/openfl-samples-haxe)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md) [![Build Status](https://img.shields.io/github/actions/workflow/status/openfl/openfl-samples-haxe/main.yml?branch=master)](https://github.com/openfl/openfl-samples-haxe/actions)
 
 OpenFL npm Samples (Haxe)
 =========================
